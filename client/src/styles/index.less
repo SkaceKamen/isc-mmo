@@ -1,0 +1,44 @@
+@import './variables.less';
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+body,
+html {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	font-family: @font;
+	background: @background-color;
+	color: @text-color;
+}
+
+canvas {
+	image-rendering: pixelated;
+	image-rendering: crisp-edges;
+}
+
+h2 {
+	margin-bottom: 2rem;
+	font-size: 200%;
+	text-align: center;
+}
+
+a {
+	color: #eeba0b;
+	text-decoration: none;
+
+	&:hover {
+		color: #f4e409;
+	}
+}
+
+@import './animations.less';
+@import './buttons.less';
+@import './menu.less';
+@import './prompt.less';
+@import './screens/ingame.less';
+@import './screens/lobby.less';

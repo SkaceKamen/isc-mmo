@@ -1,0 +1,36 @@
+.debugger {
+	font-size: 12px;
+
+	.debugger-controls {
+		position: absolute;
+		top: 0;
+		right: 0;
+		background: rgba(0, 0, 0, 0.8);
+		color: #ddd;
+
+		min-width: 200px;
+		bottom: 0;
+		overflow: auto;
+	}
+
+	.render-layers {
+		.render-layer {
+			margin: 2px 0;
+
+			&::before {
+				display: inline-block;
+				width: 12px;
+				height: 12px;
+				content: 'x';
+				text-align: center;
+				color: #000;
+			}
+
+			&.enabled {
+				&::before {
+					color: #ddd;
+				}
+			}
+		}
+	}
+}
