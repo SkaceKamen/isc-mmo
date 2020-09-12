@@ -13,8 +13,8 @@ export class Level extends Entity3D {
 
 		this.spawns = []
 
-		// Process colliders
 		model.traverse((n) => {
+			// Colliders
 			if (n instanceof Mesh && n.name.startsWith('Collider')) {
 				const collider = new Collider(this, n.geometry, [
 					ColliderLayer.Collision,
@@ -32,17 +32,20 @@ export class Level extends Entity3D {
 				toRemove.push(n)
 			}
 
+			// Spawn points
 			if (n.name.startsWith('Spawn')) {
 				this.spawns.push(n.position)
 				toRemove.push(n)
 			}
 
+			// Exits
 			if (n.name.startsWith('Exit')) {
 				const exit = this.world.createAt(Exit, n.position)
 				this.exits.push(exit)
 				toRemove.push(n)
 			}
 
+			// Set proper shadows
 			if (n instanceof Mesh) {
 				if (n.name !== 'Ground') {
 					n.castShadow = true

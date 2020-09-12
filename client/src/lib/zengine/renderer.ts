@@ -21,9 +21,9 @@ export const defaultOptions = () => ({
 		antialias: false
 	} as WebGLRendererParameters,
 	postProcessing: {
-		enabled: true,
+		enabled: false,
 		bloom: {
-			enabled: true
+			enabled: false
 		},
 		ssao: {
 			enabled: false

@@ -59,10 +59,12 @@ export class PlayerManager extends Entity {
 				state.input[1]
 			)
 
+			/*
 			this.state.player.rotation.setFromAxisAngle(
 				new Vector3(0, 1, 0),
 				state.rotation
 			)
+			*/
 		}
 	}
 

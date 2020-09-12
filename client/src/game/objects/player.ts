@@ -21,8 +21,8 @@ export class Player extends Entity3D {
 
 	state = {
 		remote: false,
-		acceleration: 100,
-		deAcceleration: 150,
+		acceleration: 90,
+		friction: 70,
 		speed: 10,
 		input: new Vector3(),
 		velocity: new Vector3(),

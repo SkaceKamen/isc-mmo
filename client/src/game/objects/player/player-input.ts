@@ -19,11 +19,17 @@ export class PlayerInput extends PlayerComponent {
 
 		if (this.isPressed('up')) {
 			input.add(new Vector3(-1, 0, 0))
-		} else if (this.isPressed('down')) {
+		}
+
+		if (this.isPressed('down')) {
 			input.add(new Vector3(1, 0, 0))
-		} else if (this.isPressed('left')) {
+		}
+
+		if (this.isPressed('left')) {
 			input.add(new Vector3(0, 0, 1))
-		} else if (this.isPressed('right')) {
+		}
+
+		if (this.isPressed('right')) {
 			input.add(new Vector3(0, 0, -1))
 		}
 

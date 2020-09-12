@@ -12,15 +12,11 @@ const moveRays = [
 
 export class PlayerMovement extends PlayerComponent {
 	tick(delta: number) {
-		this.applyInputStraight(delta)
+		// this.applyInputStraight(delta)
 
-		/*
-		if (this.state.input.lengthSq() > 0) {
-			this.applyInput(delta)
-		} else {
-			this.applyFriction(delta)
-		}
-		*/
+		this.applyFriction(delta)
+
+		this.applyInput(delta)
 
 		this.applyMove(delta)
 	}
@@ -39,15 +35,21 @@ export class PlayerMovement extends PlayerComponent {
 		if (this.state.velocity.length() > this.state.speed) {
 			this.state.velocity.normalize().multiplyScalar(this.state.speed)
 		}
+
+		if (this.state.input.lengthSq() > 0) {
+			this.player.transform.lookAt(
+				this.player.position.clone().add(this.player.state.input)
+			)
+		}
 	}
 
 	applyFriction(delta: number) {
-		if (this.state.velocity.length() > this.state.deAcceleration * delta) {
+		if (this.state.velocity.length() > this.state.friction * delta) {
 			this.state.velocity.add(
 				this.state.velocity
 					.clone()
 					.normalize()
-					.multiplyScalar(-this.state.deAcceleration * delta)
+					.multiplyScalar(-this.state.friction * delta)
 			)
 		} else {
 			this.state.velocity.set(0, 0, 0)
@@ -91,7 +93,6 @@ export class PlayerMovement extends PlayerComponent {
 				}
 			})
 
-			this.player.transform.lookAt(this.player.position.clone().add(move))
 			this.player.position.add(move.normalize().multiplyScalar(moveDistance))
 
 			this.player.game.updateStat('travelled', (v) => v + moveDistance)
